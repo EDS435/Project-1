@@ -1,0 +1,38 @@
+<?php
+    $userMistake = '';
+    $passwordMistake = '';
+    $email = '';
+    $pssWrd = '';
+    session_start();
+    if(empty($_POST["email"])){
+        $userMistake = "Enter your email please...\n";
+    }
+    else{
+            $email = input_data($_POST["email"]);
+            if(strpos($email,'@') == false){
+                $userMistake = "You don't have @....\n";
+            }
+
+    }
+    echo $userMistake;
+    echo "<br>";
+
+    if (empty($_POST["pssWrd"])){
+        $passwordMistake = "Please input your password \n";
+    }
+    elseif(strlen($_POST["pssWrd"]) <= 7){
+        $passwordMistake = "Your password should be 8 characters or longer.... \n";
+    }
+    else{
+        $passwordMistake = "Password is valid \n";
+    }
+    echo $passwordMistake;
+    echo "<br>";
+
+    function input_data($data){
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+?>
