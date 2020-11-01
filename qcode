@@ -38,7 +38,7 @@ session_start();
         $bodyMistake = "Need more answers\n";
     }
     else {
-        $Mistake = explode(',', $answer);
+        $Mistake = explode(',', $_POST["answer"]);
     }
     echo $Mistake;
     echo "<br>";
